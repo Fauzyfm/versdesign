@@ -1,4 +1,22 @@
-
+// membuat website ketika di refresh langsung ke page pertama/halaman atas
+window.onload = function () {
+    window.scrollTo(0, 0);
+};
+  
+// Hapus fragment dari URL saat halaman dimuat
+window.addEventListener('load', function () {
+    if (window.location.hash) {
+        // Simpan fragment untuk digunakan jika diperlukan
+        const fragment = window.location.hash;
+  
+        // Hapus fragment dari URL
+        history.replaceState(null, document.title, window.location.pathname + window.location.search);
+  
+        // Optional: jika ingin langsung scroll ke posisi fragment setelah fragment dihapus
+        // Uncomment baris di bawah ini
+        // document.querySelector(fragment)?.scrollIntoView();
+    }
+});
 
 const countDownDate = new Date("Dec 22, 2024 00:00:00").getTime()
 
@@ -94,10 +112,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // membuat website ketika di refresh langsung ke page pertama/halaman atas
-    window.onload = function () {
-      window.scrollTo(0, 0);
-    };
 
 
     const musicButton = document.getElementById('music')

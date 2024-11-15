@@ -1,3 +1,24 @@
+// membuat website ketika di refresh langsung ke page pertama/halaman atas
+window.onload = function () {
+    window.scrollTo(0, 0);
+};
+
+// Hapus fragment dari URL saat halaman dimuat
+window.addEventListener('load', function () {
+    if (window.location.hash) {
+        // Simpan fragment untuk digunakan jika diperlukan
+        const fragment = window.location.hash;
+
+        // Hapus fragment dari URL
+        history.replaceState(null, document.title, window.location.pathname + window.location.search);
+
+        // Optional: jika ingin langsung scroll ke posisi fragment setelah fragment dihapus
+        // Uncomment baris di bawah ini
+        // document.querySelector(fragment)?.scrollIntoView();
+    }
+});
+
+
 // Salin Rekning
 document.getElementById('copyButton').addEventListener('click', function() {
     // Pilih elemen paragraf
@@ -27,10 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// membuat website ketika di refresh langsung ke page pertama/halaman atas
-window.onload = function () {
-    window.scrollTo(0, 0);
-};
+
 
 // menangkap paramater pada url
     // Function to get the 'to' parameter from the URL
@@ -47,3 +65,30 @@ window.onload = function () {
             inviteeNameElement.textContent = inviteeName;
         }
     });
+
+// RSVP Function connect to WhatsApp
+
+function kirimWhatsApp() {
+    var nama = document.getElementById('nama').value;
+    var alamat = document.getElementById('alamat').value;
+    var konfirmasi = document.querySelector('input[name="konfirmasi"]:checked').value;
+
+    if (konfirmasi === 'tidak-hadir') {
+        var konfirmasi = "Maaf, saya tidak bisa hadir"
+    } else if (konfirmasi === '1') {
+        var konfirmasi = "1 Orang"
+    } else if (konfirmasi === '2') {
+        var konfirmasi = "2 Orang"
+    } else if (konfirmasi === 'lebih') {
+        var konfirmasi = 'Lebih dari 2 Orang'
+    }
+
+    var nomorWA = '6285155217688'; // Ganti dengan nomor WhatsApp tujuan
+    var pesan = `----- Hallo Kak Debby dan Kak Imam\nNama : *${nama}*,\nAlamat: ${alamat}. \nKonfirmasi kehadiran: ${konfirmasi}.`;    
+
+
+    var urlWA = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+
+    // Buka URL WhatsApp di tab baru
+    window.open(urlWA, '_blank');
+}
