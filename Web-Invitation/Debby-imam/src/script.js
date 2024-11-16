@@ -1,7 +1,76 @@
-// membuat website ketika di refresh langsung ke page pertama/halaman atas
-window.onload = function () {
-    window.scrollTo(0, 0);
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+// Firebase Configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyADEUNrVyFzLjtS_EkyzNtlAFAurqPXFRY",
+  authDomain: "comentsectionweb.firebaseapp.com",
+  databaseURL: "https://comentsectionweb-default-rtdb.firebaseio.com/",
+  projectId: "comentsectionweb",
+  storageBucket: "comentsectionweb.firebasestorage.app",
+  messagingSenderId: "403869665649",
+  appId: "1:403869665649:web:25d4b22710804e919f0ed0",
+  measurementId: "G-G3YHNTYK7Y"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+// DOM Elements
+const form = document.getElementById("commentForm");
+const commentsContainer = document.getElementById("commentsContainer");
+
+// Load Comments
+function loadComments() {
+  const commentsRef = ref(database, "comments");
+  onValue(commentsRef, (snapshot) => {
+    commentsContainer.innerHTML = "";
+    snapshot.forEach((childSnapshot) => {
+      const comment = childSnapshot.val();
+      const commentItem = document.createElement("div");
+      commentItem.classList.add("comment-item");
+      commentItem.innerHTML = `
+        <div class="bg-white">
+        <div class="comment-name">${comment.name}</div>
+        <div class="comment-message">${comment.message}</div>
+        <div class="comment-timestamp">${comment.timestamp}</div> <!-- Tambahkan tanggal -->
+        </div>
+      `;
+      commentsContainer.appendChild(commentItem);
+    });
+  });
+}
+
+// Save Comment
+function saveComment(name, message) {
+  const commentsRef = ref(database, "comments");
+  const timestamp = new Date().toLocaleString();
+  push(commentsRef, { name, message, timestamp });
+}
+
+// Form Submit Event
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("nameInput").value.trim();
+  const message = document.getElementById("messageInput").value.trim();
+  if (name && message) {
+    saveComment(name, message);
+    form.reset();
+  }
+});
+
+// Load Comments on Page Load
+loadComments();
+
+
+
+
+
+// membuat website ketika di refresh langsung ke page pertama/halaman atas
+// window.onload = function () {
+//     window.scrollTo(0, 0);
+// };
 
 // Hapus fragment dari URL saat halaman dimuat
 window.addEventListener('load', function () {
@@ -38,15 +107,15 @@ document.getElementById('copyButton').addEventListener('click', function() {
 });
 
 // open invitation
-document.addEventListener("DOMContentLoaded", function() {
-    // Lock scroll on page load
-    document.body.classList.add("no-scroll");
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Lock scroll on page load
+//     document.body.classList.add("no-scroll");
 
-    // Unlock scroll when button is clicked
-    document.getElementById("open-invitation").addEventListener("click", function() {
-        document.body.classList.remove("no-scroll");
-    });
-});
+//     // Unlock scroll when button is clicked
+//     document.getElementById("open-invitation").addEventListener("click", function() {
+//         document.body.classList.remove("no-scroll");
+//     });
+// });
 
 
 

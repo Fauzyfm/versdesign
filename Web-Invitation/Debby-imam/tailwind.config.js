@@ -6,7 +6,9 @@ module.exports = {
       colors: {
         "merahMaroon" : "#641623",
         "merahMuda" : "#F0CDD3",
-        "merahGelap" : "#541220"
+        "merahGelap" : "#541220",
+        "kopi" : "#BDAE97",
+        "merahAti" : "#511209"
       },
       fontFamily: {
         garamond: ['"EB Garamond"', 'serif'],
