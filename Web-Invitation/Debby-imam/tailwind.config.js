@@ -8,7 +8,8 @@ module.exports = {
         "merahMuda" : "#F0CDD3",
         "merahGelap" : "#541220",
         "kopi" : "#BDAE97",
-        "merahAti" : "#511209"
+        "merahAti" : "#511209",
+        "kopi_2" : "#EEE2CE",
       },
       fontFamily: {
         garamond: ['"EB Garamond"', 'serif'],
