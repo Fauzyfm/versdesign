@@ -101,9 +101,9 @@ document.getElementById('konfirmasi-wa').addEventListener('click', function () {
 
 
 // membuat website ketika di refresh langsung ke page pertama/halaman atas
-// window.onload = function () {
-//     window.scrollTo(0, 0);
-// };
+window.onload = function () {
+    window.scrollTo(0, 0);
+};
 
 // Hapus fragment dari URL saat halaman dimuat
 window.addEventListener('load', function () {
@@ -138,17 +138,33 @@ document.getElementById('copyButton').addEventListener('click', function() {
             console.error('Gagal menyalin teks: ', err);
         });
 });
+document.getElementById('copyButton2').addEventListener('click', function() {
+    // Pilih elemen paragraf
+    var rekeningNumber = document.getElementById('rekeningNumber2').textContent;
+
+    // Salin teks ke clipboard
+    navigator.clipboard.writeText(rekeningNumber)
+        .then(() => {
+            // Jika berhasil menyalin
+            document.getElementById('statusMSG2').textContent = 'Nomor rekening berhasil disalin!';
+        })
+        .catch((err) => {
+            // Jika terjadi kesalahan
+            document.getElementById('statusMSG2').textContent = 'Gagal menyalin nomor rekening.';
+            console.error('Gagal menyalin teks: ', err);
+        });
+});
 
 // open invitation
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Lock scroll on page load
-//     document.body.classList.add("no-scroll");
+document.addEventListener("DOMContentLoaded", function() {
+    // Lock scroll on page load
+    document.body.classList.add("no-scroll");
 
-//     // Unlock scroll when button is clicked
-//     document.getElementById("open-invitation").addEventListener("click", function() {
-//         document.body.classList.remove("no-scroll");
-//     });
-// });
+    // Unlock scroll when button is clicked
+    document.getElementById("open-invitation").addEventListener("click", function() {
+        document.body.classList.remove("no-scroll");
+    });
+});
 
 
 
