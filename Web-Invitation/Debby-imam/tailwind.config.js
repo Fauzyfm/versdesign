@@ -16,7 +16,8 @@ module.exports = {
         sacramento: ['Sacramento', 'cursive'],
         times: ['"Times New Roman"', 'serif'],
         nautigal: ['"The Nautigal"', 'cursive'],
-        playfair: ['Playfair Display', 'serif']
+        playfair: ['Playfair Display', 'serif'],
+        raleway: ['Raleway', 'serif']
       },
     },
   },

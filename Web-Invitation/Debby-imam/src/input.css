@@ -23,11 +23,7 @@
   }
   
   .form-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
     font-size: 16px;
   }
   
@@ -76,4 +72,34 @@
     font-size: 12px;
     color: #888;
   }
+
+
+      /* Animasi Fade-Up */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .fade-up {
+        animation: fadeUp 1s ease-out;
+      }
+
+.rotate-box {
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
   

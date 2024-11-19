@@ -32,9 +32,9 @@ function loadComments() {
       commentItem.classList.add("comment-item");
       commentItem.innerHTML = `
         <div class="bg-white">
-        <div class="comment-name">${comment.name}</div>
-        <div class="comment-message">${comment.message}</div>
-        <div class="comment-timestamp">${comment.timestamp}</div> <!-- Tambahkan tanggal -->
+        <div class="font-sans font-semibold text-[14px]">${comment.name}</div>
+        <div class="mt-[5px] text-[12px] font-raleway">${comment.message}</div>
+        <div class="font-sans text-[8px] mt-[8px] text-end">${comment.timestamp}</div> <!-- Tambahkan tanggal -->
         </div>
       `;
       commentsContainer.appendChild(commentItem);
@@ -48,6 +48,7 @@ function saveComment(name, message) {
   const timestamp = new Date().toLocaleString();
   push(commentsRef, { name, message, timestamp });
 }
+
 
 // Form Submit Event
 form.addEventListener("submit", (e) => {
@@ -63,7 +64,39 @@ form.addEventListener("submit", (e) => {
 // Load Comments on Page Load
 loadComments();
 
+document.getElementById('konfirmasi-wa').addEventListener('click', function () {
 
+  // RSVP Function connect to WhatsApp
+    var nama = document.getElementById('nama').value;
+    var alamat = document.getElementById('alamat').value;
+    var konfirmasi = document.querySelector('input[name="konfirmasi"]:checked').value;
+  
+    if (konfirmasi === 'tidak-hadir') {
+        var konfirmasi = "Maaf, saya tidak bisa hadir"
+    } else if (konfirmasi === '1') {
+        var konfirmasi = "1 Orang"
+    } else if (konfirmasi === '2') {
+        var konfirmasi = "2 Orang"
+    } else if (konfirmasi === 'lebih') {
+        var konfirmasi = 'Lebih dari 2 Orang'
+    }
+  
+    if (!nama || !alamat || !konfirmasi) {
+        alert("Harap isi semua data terlebih dahulu!");
+        return;
+    }
+    var nomorWA = '62817720461'; // Ganti dengan nomor WhatsApp tujuan
+    var pesan = `----- Hallo Kak Debby dan Kak Imam\nNama : *${nama}*,\nAlamat: ${alamat}. \nKonfirmasi kehadiran: ${konfirmasi}.`;    
+  
+  
+    var urlWA = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+  
+    // Buka URL WhatsApp di tab baru
+    window.open(urlWA, '_blank');
+  
+})
+
+            
 
 
 
@@ -135,29 +168,66 @@ document.getElementById('copyButton').addEventListener('click', function() {
         }
     });
 
-// RSVP Function connect to WhatsApp
 
-function kirimWhatsApp() {
-    var nama = document.getElementById('nama').value;
-    var alamat = document.getElementById('alamat').value;
-    var konfirmasi = document.querySelector('input[name="konfirmasi"]:checked').value;
 
-    if (konfirmasi === 'tidak-hadir') {
-        var konfirmasi = "Maaf, saya tidak bisa hadir"
-    } else if (konfirmasi === '1') {
-        var konfirmasi = "1 Orang"
-    } else if (konfirmasi === '2') {
-        var konfirmasi = "2 Orang"
-    } else if (konfirmasi === 'lebih') {
-        var konfirmasi = 'Lebih dari 2 Orang'
+
+
+// MUSIC
+const musicButton = document.getElementById('music')
+const musicAudio = document.getElementById('music-audio') 
+
+document.getElementById('open-invitation').addEventListener('click', function () {
+  musicButton.classList.remove('hidden')
+  musicButton.classList.add('fade-up')
+  musicAudio.play()
+})
+
+const disk = document.getElementById('disk')
+const play = document.getElementById('play')
+
+musicButton.addEventListener('click', function () {
+  if (musicAudio.paused) {
+      musicAudio.play()
+      disk.classList.remove('hidden')
+      play.classList.add('hidden')
+      musicButton.classList.add('rotate-box')
+    } else {
+      musicAudio.pause()
+      play.classList.remove('hidden')
+      disk.classList.add('hidden')
+      musicButton.classList.remove('rotate-box')
     }
+    isPlaying = !isPlaying;
+})
 
-    var nomorWA = '6285155217688'; // Ganti dengan nomor WhatsApp tujuan
-    var pesan = `----- Hallo Kak Debby dan Kak Imam\nNama : *${nama}*,\nAlamat: ${alamat}. \nKonfirmasi kehadiran: ${konfirmasi}.`;    
 
 
-    var urlWA = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+// RSVP
 
-    // Buka URL WhatsApp di tab baru
-    window.open(urlWA, '_blank');
-}
+const buttonKonfirmasi = document.getElementById('button-konfirmasi')
+const konirmasiContainer = document.getElementById('konfirmasi-kehadiran')
+const isiRSVP = document.getElementById('isi-rsvp')
+
+buttonKonfirmasi.addEventListener('click', function () {
+  isiRSVP.classList.remove('hidden')
+  isiRSVP.classList.add('fade-up')
+
+  konirmasiContainer.classList.add('hidden')
+
+
+})
+
+
+// Ucapan dan Doa
+const buttonUcapan = document.getElementById('button-ucapan')
+const ucapanContainer = document.getElementById('konfirmasi-ucapan')
+const isiucapan = document.getElementById('isi-ucapan')
+
+buttonUcapan.addEventListener('click', function () {
+  isiucapan.classList.remove('hidden')
+  isiucapan.classList.add('fade-up')
+
+  ucapanContainer.classList.add('hidden')
+
+
+})
