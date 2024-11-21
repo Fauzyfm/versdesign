@@ -198,7 +198,7 @@ window.addEventListener('load', function () {
 document.getElementById('open-invitation').addEventListener('click', function () {
   musicButton.classList.remove('hidden')
   musicButton.classList.add('fade-up')
-
+  musicAudio.play()
 })
 
 const disk = document.getElementById('disk')
