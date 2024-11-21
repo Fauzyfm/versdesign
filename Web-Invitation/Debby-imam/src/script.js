@@ -189,11 +189,11 @@ document.addEventListener("DOMContentLoaded", function() {
 const musicButton = document.getElementById('music')
 const musicAudio = document.getElementById('music-audio') 
 
-window.addEventListener('load', function () {
-  musicAudio.play().catch(error => {
-      console.log('Autoplay dicegah oleh browser:', error);
-  });
-});
+// window.addEventListener('load', function () {
+//   musicAudio.play().catch(error => {
+//       console.log('Autoplay dicegah oleh browser:', error);
+//   });
+// });
 
 document.getElementById('open-invitation').addEventListener('click', function () {
   musicButton.classList.remove('hidden')

@@ -103,3 +103,9 @@
   }
 }
   
+.text-stroke {
+  font-size: 20px; /* Ukuran teks */
+  color: white; /* Warna isi teks */
+  -webkit-text-stroke: 4px white; /* Stroke warna putih dengan ketebalan 1px */
+  text-align: center; /* Pusatkan teks */
+}

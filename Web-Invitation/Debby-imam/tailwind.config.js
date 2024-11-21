@@ -17,7 +17,8 @@ module.exports = {
         times: ['"Times New Roman"', 'serif'],
         nautigal: ['"The Nautigal"', 'cursive'],
         playfair: ['Playfair Display', 'serif'],
-        raleway: ['Raleway', 'serif']
+        raleway: ['Raleway', 'serif'],
+        playball: 'Playball'
       },
     },
   },
