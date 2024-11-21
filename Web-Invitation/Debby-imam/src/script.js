@@ -1,3 +1,24 @@
+// membuat website ketika di refresh langsung ke page pertama/halaman atas
+window.onload = function () {
+  window.scrollTo(0, 0);
+};
+
+// Hapus fragment dari URL saat halaman dimuat
+window.addEventListener('load', function () {
+  if (window.location.hash) {
+      // Simpan fragment untuk digunakan jika diperlukan
+      const fragment = window.location.hash;
+
+      // Hapus fragment dari URL
+      history.replaceState(null, document.title, window.location.pathname + window.location.search);
+
+      // Optional: jika ingin langsung scroll ke posisi fragment setelah fragment dihapus
+      // Uncomment baris di bawah ini
+      // document.querySelector(fragment)?.scrollIntoView();
+  }
+});
+
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
@@ -96,30 +117,6 @@ document.getElementById('konfirmasi-wa').addEventListener('click', function () {
   
 })
 
-            
-
-
-
-// membuat website ketika di refresh langsung ke page pertama/halaman atas
-window.onload = function () {
-    window.scrollTo(0, 0);
-};
-
-// Hapus fragment dari URL saat halaman dimuat
-window.addEventListener('load', function () {
-    if (window.location.hash) {
-        // Simpan fragment untuk digunakan jika diperlukan
-        const fragment = window.location.hash;
-
-        // Hapus fragment dari URL
-        history.replaceState(null, document.title, window.location.pathname + window.location.search);
-
-        // Optional: jika ingin langsung scroll ke posisi fragment setelah fragment dihapus
-        // Uncomment baris di bawah ini
-        // document.querySelector(fragment)?.scrollIntoView();
-    }
-});
-
 
 // Salin Rekning
 document.getElementById('copyButton').addEventListener('click', function() {
@@ -192,10 +189,16 @@ document.addEventListener("DOMContentLoaded", function() {
 const musicButton = document.getElementById('music')
 const musicAudio = document.getElementById('music-audio') 
 
+window.addEventListener('load', function () {
+  musicAudio.play().catch(error => {
+      console.log('Autoplay dicegah oleh browser:', error);
+  });
+});
+
 document.getElementById('open-invitation').addEventListener('click', function () {
   musicButton.classList.remove('hidden')
   musicButton.classList.add('fade-up')
-  musicAudio.play()
+
 })
 
 const disk = document.getElementById('disk')
