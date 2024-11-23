@@ -1,22 +1,22 @@
 // membuat website ketika di refresh langsung ke page pertama/halaman atas
-// window.onload = function () {
-//   window.scrollTo(0, 0);
-// };
+window.onload = function () {
+  window.scrollTo(0, 0);
+};
 
-// // Hapus fragment dari URL saat halaman dimuat
-// window.addEventListener('load', function () {
-//   if (window.location.hash) {
-//       // Simpan fragment untuk digunakan jika diperlukan
-//       const fragment = window.location.hash;
+// Hapus fragment dari URL saat halaman dimuat
+window.addEventListener('load', function () {
+  if (window.location.hash) {
+      // Simpan fragment untuk digunakan jika diperlukan
+      const fragment = window.location.hash;
 
-//       // Hapus fragment dari URL
-//       history.replaceState(null, document.title, window.location.pathname + window.location.search);
+      // Hapus fragment dari URL
+      history.replaceState(null, document.title, window.location.pathname + window.location.search);
 
-//       // Optional: jika ingin langsung scroll ke posisi fragment setelah fragment dihapus
-//       // Uncomment baris di bawah ini
-//       // document.querySelector(fragment)?.scrollIntoView();
-//   }
-// });
+      // Optional: jika ingin langsung scroll ke posisi fragment setelah fragment dihapus
+      // Uncomment baris di bawah ini
+      // document.querySelector(fragment)?.scrollIntoView();
+  }
+});
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
@@ -153,15 +153,15 @@ document.getElementById('copyButton2').addEventListener('click', function() {
 });
 
 // open invitation
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Lock scroll on page load
-//     document.body.classList.add("no-scroll");
+document.addEventListener("DOMContentLoaded", function() {
+    // Lock scroll on page load
+    document.body.classList.add("no-scroll");
 
-//     // Unlock scroll when button is clicked
-//     document.getElementById("open-invitation").addEventListener("click", function() {
-//         document.body.classList.remove("no-scroll");
-//     });
-// });
+    // Unlock scroll when button is clicked
+    document.getElementById("open-invitation").addEventListener("click", function() {
+        document.body.classList.remove("no-scroll");
+    });
+});
 
 
 
