@@ -1286,8 +1286,8 @@ video {
   padding-right: 41px;
 }
 
-.pt-\[250px\] {
-  padding-top: 250px;
+.pt-\[200px\] {
+  padding-top: 200px;
 }
 
 .pt-\[40px\] {
@@ -1296,14 +1296,6 @@ video {
 
 .pt-\[50px\] {
   padding-top: 50px;
-}
-
-.pt-\[200px\] {
-  padding-top: 200px;
-}
-
-.pt-\[220px\] {
-  padding-top: 220px;
 }
 
 .text-left {

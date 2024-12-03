@@ -114,37 +114,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-    const musicButton = document.getElementById('music')
-    const navigation = document.getElementById('navigation')
-    const musicAudio = document.getElementById('music-audio') 
-    const isiMusic = document.getElementById('isi-music')
-    const isiIcon = document.getElementById('isi-icon')
-    let isPlaying = false;
+    // const musicButton = document.getElementById('music')
+    // const navigation = document.getElementById('navigation')
+    // const musicAudio = document.getElementById('music-audio') 
+    // const isiMusic = document.getElementById('isi-music')
+    // const isiIcon = document.getElementById('isi-icon')
+    // let isPlaying = false;
 
-    document.getElementById('open-invitation').addEventListener('click', function() {
-        musicButton.classList.remove('hidden')
-        musicButton.classList.add('fade-up')
-        musicButton.classList.add('flex')
+    // document.getElementById('open-invitation').addEventListener('click', function() {
+    //     musicButton.classList.remove('hidden')
+    //     musicButton.classList.add('fade-up')
+    //     musicButton.classList.add('flex')
 
 
-        navigation.classList.remove('hidden')
-        navigation.classList.add('fade-up')
+    //     navigation.classList.remove('hidden')
+    //     navigation.classList.add('fade-up')
 
-        musicAudio.play()
-    })
+    //     musicAudio.play()
+    // })
 
-    musicButton.addEventListener('click', function () {
-        if (!isPlaying) {
-            musicAudio.play()
-            isiIcon.classList.remove('fa-pause')
-            isiIcon.classList.add('fa-music')
-          } else {
-            musicAudio.pause()
-            isiIcon.classList.remove('fa-music')
-            isiIcon.classList.add('fa-pause')
-          }
-          isPlaying = !isPlaying;
-    })
+    // musicButton.addEventListener('click', function () {
+    //     if (!isPlaying) {
+    //         musicAudio.play()
+    //         isiIcon.classList.remove('fa-pause')
+    //         isiIcon.classList.add('fa-music')
+    //       } else {
+    //         musicAudio.pause()
+    //         isiIcon.classList.remove('fa-music')
+    //         isiIcon.classList.add('fa-pause')
+    //       }
+    //       isPlaying = !isPlaying;
+    // })
 
 
     window.addEventListener('scroll', function(){
