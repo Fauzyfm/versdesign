@@ -18,6 +18,72 @@ window.addEventListener('load', function () {
     }
 });
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+// Firebase Configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBgvt09MQ7I5FGZT6ADjnJ5VEdPFuggipQ",
+  authDomain: "tini-agus-web-invitation.firebaseapp.com",
+  databaseURL: "https://tini-agus-web-invitation-default-rtdb.firebaseio.com/",
+  projectId: "tini-agus-web-invitation",
+  storageBucket: "tini-agus-web-invitation.firebasestorage.app",
+  messagingSenderId: "81413055593",
+  appId: "1:81413055593:web:346652fc4f52d01a392ef8",
+  measurementId: "G-JLPBCNSYQN"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+// DOM Elements
+const form = document.getElementById("commentForm");
+const commentsContainer = document.getElementById("commentsContainer");
+
+// Load Comments
+function loadComments() {
+  const commentsRef = ref(database, "comments");
+  onValue(commentsRef, (snapshot) => {
+    commentsContainer.innerHTML = "";
+    snapshot.forEach((childSnapshot) => {
+      const comment = childSnapshot.val();
+      const commentItem = document.createElement("div");
+      commentItem.classList.add("comment-item");
+      commentItem.innerHTML = `
+        <div class="bg-white">
+        <div class="font-sans ml-[10px] font-semibold text-[14px]">${comment.name}</div>
+        <div class="mt-[5px] ml-[10px] text-[12px] font-raleway">${comment.message}</div>
+        <div class="font-sans text-[8px] mt-[8px] text-end">${comment.timestamp}</div> <!-- Tambahkan tanggal -->
+        </div>
+      `;
+      commentsContainer.appendChild(commentItem);
+    });
+  });
+}
+
+// Save Comment
+function saveComment(name, message) {
+  const commentsRef = ref(database, "comments");
+  const timestamp = new Date().toLocaleString();
+  push(commentsRef, { name, message, timestamp });
+}
+
+
+// Form Submit Event
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("nameInput").value.trim();
+  const message = document.getElementById("messageInput").value.trim();
+  if (name && message) {
+    saveComment(name, message);
+    form.reset();
+  }
+});
+
+// Load Comments on Page Load
+loadComments();
+
 const countDownDate = new Date("Dec 22, 2024 00:00:00").getTime()
 
 const x = setInterval(function () {
@@ -38,7 +104,7 @@ const x = setInterval(function () {
 
 
 
-// Salin Rekning
+// Salin Rekning 1
 document.getElementById('copyButton').addEventListener('click', function() {
     // Pilih elemen paragraf
     var rekeningNumber = document.getElementById('rekeningNumber').textContent;
@@ -47,7 +113,8 @@ document.getElementById('copyButton').addEventListener('click', function() {
     navigator.clipboard.writeText(rekeningNumber)
         .then(() => {
             // Jika berhasil menyalin
-            document.getElementById('statusMSG').textContent = 'Nomor rekening berhasil disalin!';
+            document.getElementById('statusMSG').classList.remove('fa-copy')
+            document.getElementById('statusMSG').classList.add('fa-clipboard')
         })
         .catch((err) => {
             // Jika terjadi kesalahan
@@ -55,11 +122,30 @@ document.getElementById('copyButton').addEventListener('click', function() {
             console.error('Gagal menyalin teks: ', err);
         });
 });
+// Salin Rekning 2
+document.getElementById('copyButton1').addEventListener('click', function() {
+    // Pilih elemen paragraf
+    var rekeningNumber = document.getElementById('rekeningNumber1').textContent;
+
+    // Salin teks ke clipboard
+    navigator.clipboard.writeText(rekeningNumber)
+        .then(() => {
+            // Jika berhasil menyalin
+            document.getElementById('statusMSG1').classList.remove('fa-copy')
+            document.getElementById('statusMSG1').classList.add('fa-clipboard')
+        })
+        .catch((err) => {
+            // Jika terjadi kesalahan
+            document.getElementById('statusMSG1').textContent = 'Gagal menyalin nomor rekening.';
+            console.error('Gagal menyalin teks: ', err);
+        });
+});
+
 
 
 // Reservasi Whatssapp
 
-function kirimWhatsApp() {
+document.getElementById('konfirmasi-wa').addEventListener('click' , function() {
     var nama = document.getElementById('nama').value;
     var alamat = document.getElementById('alamat').value;
     var konfirmasi = document.querySelector('input[name="konfirmasi"]:checked').value;
@@ -75,14 +161,21 @@ function kirimWhatsApp() {
     }
 
     var nomorWA = '6281382820300'; // Ganti dengan nomor WhatsApp tujuan
-    var pesan = `Nama : *${nama}*,\n Alamat: ${alamat}. \n Konfirmasi kehadiran: ${konfirmasi}.`;    
+    var pesan = `
+    Halo Kak Tini dan Kak Agus\nTerimakasih atas undangan yang telah diberikan.\nKami dengan senang hati mengonfirmasi kehadiran pada acara pernikahan kalian:
+    \nNama : *${nama}* 
+    \nAlamat: *${alamat}*
+    \nKonfirmasi kehadiran: *${konfirmasi}*
+    \n\nTerimakasih, Selamat menempuh kehidupan Baru ^_^`;   
 
 
     var urlWA = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
 
     // Buka URL WhatsApp di tab baru
     window.open(urlWA, '_blank');
-}
+
+})
+
 
 
 // open invitation
@@ -114,37 +207,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-    // const musicButton = document.getElementById('music')
-    // const navigation = document.getElementById('navigation')
-    // const musicAudio = document.getElementById('music-audio') 
-    // const isiMusic = document.getElementById('isi-music')
-    // const isiIcon = document.getElementById('isi-icon')
-    // let isPlaying = false;
+    const musicButton = document.getElementById('music')
+    const navigation = document.getElementById('navigation')
+    const musicAudio = document.getElementById('music-audio') 
+    const isiMusic = document.getElementById('isi-music')
+    const isiIcon = document.getElementById('isi-icon')
+    let isPlaying = false;
 
-    // document.getElementById('open-invitation').addEventListener('click', function() {
-    //     musicButton.classList.remove('hidden')
-    //     musicButton.classList.add('fade-up')
-    //     musicButton.classList.add('flex')
+    document.getElementById('open-invitation').addEventListener('click', function() {
+        musicButton.classList.remove('hidden')
+        musicButton.classList.add('fade-up')
+        musicButton.classList.add('flex')
 
 
-    //     navigation.classList.remove('hidden')
-    //     navigation.classList.add('fade-up')
+        navigation.classList.remove('hidden')
+        navigation.classList.add('fade-up')
 
-    //     musicAudio.play()
-    // })
+        musicAudio.play()
+    })
 
-    // musicButton.addEventListener('click', function () {
-    //     if (!isPlaying) {
-    //         musicAudio.play()
-    //         isiIcon.classList.remove('fa-pause')
-    //         isiIcon.classList.add('fa-music')
-    //       } else {
-    //         musicAudio.pause()
-    //         isiIcon.classList.remove('fa-music')
-    //         isiIcon.classList.add('fa-pause')
-    //       }
-    //       isPlaying = !isPlaying;
-    // })
+    const disk = document.getElementById('disk')
+    const play = document.getElementById('play')
+    
+    musicButton.addEventListener('click', function () {
+      if (musicAudio.paused) {
+          musicAudio.play()
+          disk.classList.remove('hidden')
+          play.classList.add('hidden')
+          musicButton.classList.add('rotate-box')
+        } else {
+          musicAudio.pause()
+          play.classList.remove('hidden')
+          disk.classList.add('hidden')
+          musicButton.classList.remove('rotate-box')
+        }
+        isPlaying = !isPlaying;
+    })
 
 
     window.addEventListener('scroll', function(){
@@ -180,16 +278,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // image slider
 
-const images = ["public/Galery/IMG_1862_copy_1.jpg", 
-                "public/Galery/IMG_1905-Edit.jpg", 
-                "public/Galery/IMG_1971_copy_1.jpg",
-                "public/Galery/IMG_1779-Edit.jpg",
-                "public/Galery/IMG_2011_copy_1.jpg",
-                "public/Galery/IMG_2390.JPEG.jpg",
-                "public/Galery/IMG_2041-Edit-2.jpg",
-                "public/Galery/IMG_2391.JPEG.jpg",
-                "public/Galery/IMG_1819-Edit.jpg",
-                "public/Galery/IMG_1575.jpg"]
+const images = ["public/Asset/gallery/1.jpg", 
+                "public/Asset/gallery/2.jpg", 
+                "public/Asset/gallery/3.jpg",
+                "public/Asset/gallery/4.jpg",
+                "public/Asset/gallery/5.jpg",
+                "public/Asset/gallery/6.jpg",
+                "public/Asset/gallery/7.jpg",
+                "public/Asset/gallery/8.jpg",
+                "public/Asset/gallery/9.jpg",]
 
 let currentIndex = 0;
 

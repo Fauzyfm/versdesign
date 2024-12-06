@@ -8,14 +8,19 @@ module.exports = {
         cinzel : "Cinzel",
         inter : "Inter",
         ebGarmond: "EB+Garamond",
+        times: ['"Times New Roman"', 'serif'],
+        playfair: ['Playfair Display', 'serif'],
+        volkhov: ["Volkhov", 'serif'],
+        raleway: ['Raleway', 'serif'],
       },
       colors: {
-        emas: "#B79A4B",
-        birdong: "#213549",
+        emas: "#BC9749",
+        birdong: "#1A2D3B",
         abu: "#DDDDDD",
         emasTua: "#836B24",
-        biruGelap: "#040A16",
+        biruGelap: "#0F2230",
         hijaugelap: "#132A13",
+        cklt: "#80522C"
       }
     },
   },
