@@ -325,3 +325,41 @@ let currentIndex = 0;
             currentIndex = (currentIndex - 1 + images.length) % images.length;  // Mengurangi indeks dengan modular
             updateImage();  // Memperbarui gambar di lightbox
         }
+
+
+// RSVP
+
+const buttonKonfirmasi = document.getElementById('button-konfirmasi-rsvp')
+const konirmasiContainer = document.getElementById('konfirmasi-kehadiran-rsvp')
+const isiRSVP = document.getElementById('isi-rsvp')
+const section8 = document.getElementById('rsvp-comment')
+
+buttonKonfirmasi.addEventListener('click', function () {
+  isiRSVP.classList.remove('hidden')
+  isiRSVP.classList.add('fade-up')
+
+  konirmasiContainer.classList.add('hidden')
+
+  section8.classList.remove('h-[844px]')
+  section8.classList.add('h-[auto]')
+
+})
+
+// ucapan/comment
+
+const buttonKonfirmasiUcapan = document.getElementById('button-konfirmasi-ucapan')
+const konirmasiContainerUcapan = document.getElementById('konfirmasi-kehadiran-ucapan')
+const isiucapan = document.getElementById('isi-ucapan')
+
+buttonKonfirmasiUcapan.addEventListener('click', function () {
+  isiucapan.classList.remove('hidden')
+  isiucapan.classList.add('fade-up')
+
+  konirmasiContainerUcapan.classList.add('hidden')
+
+  section8.classList.remove('h-[844px]')
+  section8.classList.add('h-[auto]')
+  section8.classList.remove('bg-cover')
+  section8.classList.add('bg-contain')
+
+})
