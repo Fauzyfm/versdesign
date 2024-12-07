@@ -22,7 +22,7 @@ module.exports = {
         emasTua: "#836B24",
         biruGelap: "#00001C",
         hijaugelap: "#132A13",
-        cklt: "#80522C"
+        cklt: "#CBB374"
       }
     },
   },
