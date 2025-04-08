@@ -1,0 +1,72 @@
+/* Container Utama */
+.container {
+  position: relative;
+  background-color: #ffffff;
+  padding: 60px 20px;
+  overflow: hidden; /* Memastikan bagian terpotong tidak overflow */
+}
+
+/* Background Terpotong */
+.background-cut {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4f46e5; /* Warna biru */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Membentuk potongan */
+  z-index: 1; /* Di bawah konten */
+}
+
+/* Konten */
+.content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  z-index: 2; /* Di atas background */
+  text-align: center;
+}
+
+/* Judul */
+.content h2 {
+  color: #ffffff; /* Warna teks putih */
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.content h1 {
+  color: #ffffff; /* Warna teks putih */
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+/* Grid untuk Fitur */
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Item Fitur */
+.feature-item {
+  background-color: rgba(255, 255, 255, 0.9); /* Latar semi-transparan */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.feature-item h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b; /* Warna teks gelap */
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #475569; /* Warna teks abu-abu */
+  margin-top: 10px;
+}

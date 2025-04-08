@@ -1,0 +1,32 @@
+      /* Animasi untuk efek mengetik */
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      /* Animasi untuk efek kursor berkedip */
+      @keyframes blink-cursor {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: white; /* Warna kursor */
+        }
+      }
+
+      .typewriter {
+        overflow: hidden; /* Menyembunyikan teks yang belum diketik */
+        border-right: 0.15em solid orange; /* Kursor */
+        white-space: nowrap; /* Mencegah teks berganti baris */
+        margin: 0 auto ;
+        display: flex;
+        flex-wrap: wrap;
+        letter-spacing: 0.15em; /* Jarak antar huruf */
+        animation: typing 3.5s steps(40, end), blink-cursor 0.75s step-end infinite;
+        text: text-wrap;
+      }
