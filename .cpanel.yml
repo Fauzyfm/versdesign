@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - /bin/rm -rf /home/vert7271/public_html/*
+    - /usr/local/bin/npm install
+    - /usr/local/bin/npm run build
+    - /bin/cp -r build/* /home/vert7271/public_html/
