@@ -1,10 +1,10 @@
-import Navbar from './components/common/Navbar'
+// import Navbar from './components/common/Navbar'
 import Home from './pages/Home'
-import About from './pages/About'
-import Service from './pages/Service'
-import Packet from './pages/Packet'
+// import About from './pages/About'
+// import Service from './pages/Service'
+// import Packet from './pages/Packet'
 import FormProject from './pages/FormProject'
-import Footer from './components/common/Footer'
+// import Footer from './components/common/Footer'
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Impor stylesheet AOS

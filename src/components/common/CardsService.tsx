@@ -10,16 +10,15 @@ import { Button } from "../ui/button"
 import {Link} from 'react-router'
 
   interface CardsServiceProps {
-    id: number
     title: string;
     cardContent: string;  
     icon?: string;
   }
 
-  import { useParams } from "react-router";
+  // import { useParams } from "react-router";
 
 
-const CardsService = ({id, title, cardContent, icon}: CardsServiceProps) => {
+const CardsService = ({ title, cardContent, icon }: CardsServiceProps) => {
 
 
   return (
