@@ -28,5 +28,5 @@
         flex-wrap: wrap;
         letter-spacing: 0.15em; /* Jarak antar huruf */
         animation: typing 3.5s steps(40, end), blink-cursor 0.75s step-end infinite;
-        text: text-wrap;
+        text-wrap: text-wrap;
       }
