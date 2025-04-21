@@ -34,7 +34,7 @@ function App() {
 
         <Route path='*' element={<NotFoundPage />} />
 ;
-        <Route path='/web-invitation/tini-agus/:namaTamu' element={<TiniAgus />} />
+        <Route path='/Web-invitation/tini-agus/' element={<TiniAgus />} />
       </Routes>
       {/* <Navbar />
       <Home />

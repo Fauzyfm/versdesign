@@ -3,11 +3,19 @@ import { useForm } from "react-hook-form"
 import { useSearchParams } from "react-router"
 
 
+type RegisterFormSchema = {
+    name: string,
+    email: string,
+    phone: string,
+    deskripsi: string,
+}
+
+
 function Form() {
     const [param] = useSearchParams()
     const project = param.get("product")
 
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit } = useForm<RegisterFormSchema>()
     const onSubmit = (data: any) => {
         const phoneNumber = "6285155217688"
         const projectParam = project
