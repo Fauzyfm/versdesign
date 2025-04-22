@@ -13,6 +13,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import MainPage from './pages/MainPage'
 import TiniAgus from './invitation-website/Tini-Agus/TiniAgus'
 import ContactPage from './pages/ContactPage'
+import DebbyImam from './invitation-website/Debby-Imam/DebbyImam';
 
 
 function App() {
@@ -34,7 +35,8 @@ function App() {
 
         <Route path='*' element={<NotFoundPage />} />
 ;
-        <Route path='/Web-invitation/tini-agus/' element={<TiniAgus />} />
+        <Route path='/Web-Invitation/tini-agus/' element={<TiniAgus />} />
+        <Route path='/Web-Invitation/Debby-imam/' element={<DebbyImam />} />
       </Routes>
       {/* <Navbar />
       <Home />
